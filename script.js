@@ -1,9 +1,37 @@
-let image = [
+let images = [
     "background.jpg", "christmas-1.jpg", "christmas-2.jpg", "christmas-market.jpg", 
     "cinnamon.jpg", "cocoa.jpg", "gift.jpg", "hochybrig.jpg", 
     "nature.jpg", "snowflake.jpg", "snowman.jpg", "winter.jpg"
 ];
 
+
+function render() {
+  includeHTML();
+  printImg();
+}
+
+
+function printImg() {
+  const content = document.getElementById('content');
+  content.innerHTML = '';
+
+  for(let i = 0; i < images.length; i++) {
+    content.innerHTML += `
+      <div class="img-container">
+        <img src="./assets/img/${images[i]}" alt="Image">
+      </div>
+    `;
+  }
+}
+
+
+function generateFullScreen(value) {
+  const content = document.getElementById('content');
+
+  content.innerHTML += {
+    
+  }
+}
 
 
 function includeHTML() {
