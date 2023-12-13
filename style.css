@@ -2,12 +2,18 @@ body {
     margin: 0;
 }
 
+
 #content {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
     justify-content: center;
     margin-top: 16px;
+}
+
+
+.d-none {
+    display: none;
 }
 
 
@@ -18,6 +24,7 @@ body {
 
 .img-container:hover {
     box-shadow: -2px -2px 6px 4px lightgray;
+    cursor: pointer;
 }
 
 
@@ -57,6 +64,25 @@ body {
     scale: 1.0;
     width: 66%;
     height: 66%;
+}
+
+
+.small-current-img-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    height: 100vh;
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+
+.small-current-img-container div {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
 }
 
 @media (max-width: 768px) {

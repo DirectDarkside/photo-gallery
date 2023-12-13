@@ -18,7 +18,7 @@ function printImg() {
   for(let i = 0; i < images.length; i++) {
     content.innerHTML += `
       <div class="img-container">
-        <img src="./assets/img/${images[i]}" alt="Image">
+        <img src="./assets/img/${images[i]}" alt="Image" onclick="generateFullScreen(${i})">
       </div>
     `;
   }
@@ -27,9 +27,46 @@ function printImg() {
 
 function generateFullScreen(value) {
   const content = document.getElementById('content');
+  const header = document.getElementById('header');
+  header.classList.add('d-none');
+  content.innerHTML = '';
 
-  content.innerHTML += {
-    
+  content.innerHTML += /*html*/ `
+    <div class="current-img-container">
+        <img class="arrow" src="./assets/img/left-arrow.png" alt="left arrow" onclick="changeImage(${value}, 'back')">
+        <img class="current-img" src="./assets/img/${images[value]}" alt="current image">
+        <img class="arrow" src="./assets/img/right-arrow.png" alt="right-arrow" onclick="changeImage(${value}, 'forward')">
+    </div>
+  `;
+}
+
+
+function changeImage(value, control) {
+  if(control === 'back') {
+    value--;
+    if(value < 0) {
+      value = checkValue(value);
+    }
+    generateFullScreen(value);
+  }
+  if(control === 'forward') {
+    value++;
+    if(value > (images.length - 1)) {
+      value = checkValue(value);
+    }
+    generateFullScreen(value);
+  }
+}
+
+
+function checkValue(index) {
+  if(index < 0) {
+    index = images.length - 1;
+    return index;
+  }
+  if(index > (images.length - 1)) {
+    index = 0;
+    return index;
   }
 }
 
