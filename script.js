@@ -33,41 +33,37 @@ function generateFullScreen(value) {
 
   content.innerHTML += /*html*/ `
     <div class="current-img-container">
-        <img class="arrow" src="./assets/img/left-arrow.png" alt="left arrow" onclick="changeImage(${value}, 'back')">
+      <div class="current-img-button">
+        <button onclick="printImg()">X</button>
+      </div>
+      <div class="current-img-section">
         <img class="current-img" src="./assets/img/${images[value]}" alt="current image">
-        <img class="arrow" src="./assets/img/right-arrow.png" alt="right-arrow" onclick="changeImage(${value}, 'forward')">
+        <div class="current-img-arrows">
+          <img class="arrow" src="./assets/img/left-arrow.png" alt="left arrow" onclick="changeImageBack(${value})">
+          <img class="arrow" src="./assets/img/right-arrow.png" alt="right-arrow" onclick="changeImageForward(${value})"> 
+        </div>
+      </div>
     </div>
   `;
 }
 
 
-function changeImage(value, control) {
-  if(control === 'back') {
-    value--;
-    if(value < 0) {
-      value = checkValue(value);
-    }
-    generateFullScreen(value);
+function changeImageBack(value) {
+  value--;
+  if(value < 0) {
+    value = images.length - 1;
   }
-  if(control === 'forward') {
-    value++;
-    if(value > (images.length - 1)) {
-      value = checkValue(value);
-    }
-    generateFullScreen(value);
-  }
+  generateFullScreen(value);
 }
 
 
-function checkValue(index) {
-  if(index < 0) {
-    index = images.length - 1;
-    return index;
+function changeImageForward(value) {
+  value++;
+  if(value > (images.length - 1)) {
+    value = 0;
   }
-  if(index > (images.length - 1)) {
-    index = 0;
-    return index;
-  }
+  generateFullScreen(value);
+  
 }
 
 
