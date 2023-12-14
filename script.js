@@ -34,7 +34,7 @@ function generateFullScreen(value) {
   content.innerHTML += /*html*/ `
     <div class="current-img-container">
       <div class="current-img-button">
-        <button onclick="printImg()">X</button>
+        <button class="close-button" onclick="closeFullScreen()">X</button>
       </div>
       <div class="current-img-section">
         <img class="current-img" src="./assets/img/${images[value]}" alt="current image">
@@ -45,6 +45,13 @@ function generateFullScreen(value) {
       </div>
     </div>
   `;
+}
+
+
+function closeFullScreen() {
+  const header = document.getElementById('header');
+  header.classList.remove('d-none');
+  printImg()
 }
 
 
